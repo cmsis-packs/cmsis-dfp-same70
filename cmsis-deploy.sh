@@ -1,16 +1,16 @@
 #!/bin/bash
 
-name=cmsis-dfp-template
-vendor=template
-version=0.0
-source_url=
+name=cmsis-dfp-same70
+vendor=Atmel
+version=2.4.166
+source_url=http://packs.download.atmel.com/$vendor.SAME70_DFP.$version.atpack
 
 build_dir='cmsis_build'
 deploy_dir='cmsis_deploy'
 
 prepare() {
     echo "preparing..." 
-    
+
     if [ -z "$build_dir" ]
     then
         echo " var\$build_dir is empty"
@@ -22,7 +22,7 @@ prepare() {
         echo "var \$deploy_dir is empty"
         exit
     fi
-    
+
     mkdir -p $build_dir
     mkdir -p $deploy_dir
 
@@ -55,8 +55,9 @@ extract() {
 
 deploy() {
     echo "deploying..."
-    cp -r $build_dir/example $deploy_dir
-    cp $build_dir/example.txt $deploy_dir
+    cp -r $build_dir/same70a $deploy_dir
+    cp -r $build_dir/same70b $deploy_dir
+    cp -r $build_dir/scripts $deploy_dir
 }
 
 prepare
